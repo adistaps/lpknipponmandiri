@@ -30,7 +30,7 @@ const PACKAGES = [
     ],
     cta: "Daftar Kelas Dasar",
     ctaMsg:
-      "Halo Admin LPK Nippon Mandiri 👋, saya tertarik mendaftar Kelas Dasar (setara JLPT N5). Boleh info lebih lanjut?",
+      "Halo Admin LPK Hikari Karya Mandiri 👋, saya tertarik mendaftar Kelas Dasar (setara JLPT N5). Boleh info lebih lanjut?",
   },
   {
     id: "lanjutan",
@@ -51,7 +51,7 @@ const PACKAGES = [
     ],
     cta: "Daftar Kelas Lanjutan",
     ctaMsg:
-      "Halo Admin LPK Nippon Mandiri 👋, saya tertarik mendaftar Kelas Lanjutan untuk persiapan JFT-Basic A2. Boleh info lebih lanjut?",
+      "Halo Admin LPK Hikari Karya Mandiri 👋, saya tertarik mendaftar Kelas Lanjutan untuk persiapan JFT-Basic A2. Boleh info lebih lanjut?",
   },
 ]
 

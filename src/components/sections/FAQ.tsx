@@ -19,7 +19,7 @@ const faqs = [
     },
     {
         question: "Apakah saya wajib mendaftar lewat LPK atau perusahaan penyalur?",
-        answer: "Tidak wajib. Jalur mandiri (self-processing) tersedia dan sah. LPK Nippon Mandiri hadir sebagai mentor dan pendamping agar proses yang kamu jalani tetap aman, transparan, dan tenang."
+        answer: "Tidak wajib. Jalur mandiri (self-processing) tersedia dan sah. LPK Hikari Karya Mandiri hadir sebagai mentor dan pendamping agar proses yang kamu jalani tetap aman, transparan, dan tenang."
     },
     {
         question: "Siapa saja yang bisa mendaftar?",
@@ -41,7 +41,7 @@ const faqs = [
 
 export default function FAQ() {
     const handleContact = () => {
-        window.open(waLink("Halo Admin LPK Nippon Mandiri 👋, saya punya beberapa pertanyaan seputar program kerja ke Jepang jalur Tokutei Ginou."), "_blank");
+        window.open(waLink("Halo Admin LPK Hikari Karya Mandiri 👋, saya punya beberapa pertanyaan seputar program kerja ke Jepang jalur Tokutei Ginou."), "_blank");
     };
 
     return (
@@ -58,7 +58,7 @@ export default function FAQ() {
 
                     <ScrollReveal direction="up" delay={0.2} className="w-full md:w-1/2 flex flex-col items-start md:items-end text-left md:text-right">
                         <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-md mb-6">
-                            Punya pertanyaan sebelum memulai langkahmu? Temukan informasi seputar jalur Tokutei Ginou, persyaratan, dan pendampingan dari LPK Nippon Mandiri.
+                            Punya pertanyaan sebelum memulai langkahmu? Temukan informasi seputar jalur Tokutei Ginou, persyaratan, dan pendampingan dari LPK Hikari Karya Mandiri.
                         </p>
                         <button
                             onClick={handleContact}

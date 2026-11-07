@@ -44,7 +44,7 @@ export default function Founder() {
                         <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#1f2326]">
                             <Image
                                 src="/founder.webp"
-                                alt="Foto Khidayat Hamim, pendiri LPK Nippon Mandiri"
+                                alt="Foto Khidayat Hamim, pendiri LPK Hikari Karya Mandiri"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 className="object-cover object-center"

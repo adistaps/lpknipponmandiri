@@ -7,7 +7,7 @@ import ScrollReveal from "../ui/ScrollReveal"
 
 // ── Data konten Contact Us — edit langsung di sini ───────────────────────────
 const CONTACT = {
-  nama: "LPK Nippon Mandiri",
+  nama: "LPK Hikari Karya Mandiri",
   alamat: "Dsn.Ngelo RT. 012 Rw.003 Ds.Sudungdewo Kec.Kertek Kab.Wonosobo",
   wa: "6281249466910",          // format internasional tanpa +
   waTampil: "+62 812-4946-6910",
@@ -79,7 +79,7 @@ export default function ContactSection() {
             <ScrollReveal direction="up" delay={0.2} className="mt-6 sm:mt-8 flex-1">
               <div className="relative h-[320px] sm:h-[420px] lg:h-full lg:min-h-[420px] overflow-hidden rounded-2xl sm:rounded-3xl border border-white/20 bg-[#1f2326] shadow-2xl">
                 <iframe
-                  title="Lokasi Kantor LPK Nippon Mandiri"
+                  title="Lokasi Kantor LPK Hikari Karya Mandiri"
                   src={embedUrl}
                   style={{ border: 0 }}
                   allowFullScreen

@@ -16,7 +16,7 @@ export default function CTASection() {
             <div className="absolute inset-0 -z-10">
                 <Image
                     src={CTA_BG_IMAGE}
-                    alt="LPK Nippon Mandiri"
+                    alt="LPK Hikari Karya Mandiri"
                     fill
                     sizes="100vw"
                     loading="lazy"

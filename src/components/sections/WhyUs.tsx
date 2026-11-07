@@ -53,7 +53,7 @@ export default function WhyUs() {
                             Mengapa Memilih Kami
                         </h2>
                         <p className="text-xs sm:text-base lg:text-lg text-slate-200 leading-relaxed px-2 sm:px-6 font-medium">
-                            Pengalamanmu adalah aset. Biarkan LPK Nippon Mandiri mendampingimu mengubah kerja keras di Indonesia menjadi langkah pasti menuju karier di Jepang, tanpa ribet dan tanpa bingung informasi.
+                            Pengalamanmu adalah aset. Biarkan LPK Hikari Karya Mandiri mendampingimu mengubah kerja keras di Indonesia menjadi langkah pasti menuju karier di Jepang, tanpa ribet dan tanpa bingung informasi.
                         </p>
                     </div>
                 </ScrollReveal>

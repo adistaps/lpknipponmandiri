@@ -18,7 +18,7 @@ export default function BlogPage() {
         href="/"
         className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-white sm:text-sm"
       >
-        LPK Nippon Mandiri
+        LPK Hikari Karya Mandiri
       </Link>
 
       <div className="flex flex-1 flex-col items-center justify-center pb-24">

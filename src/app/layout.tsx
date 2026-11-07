@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    'lpk nippon mandiri',
+    'lpk Hikari Karya Mandiri',
     'kerja ke jepang',
     'kerja ke jepang mandiri',
     'tokutei ginou',

@@ -1,6 +1,6 @@
-# LPK Nippon Mandiri — Website
+# LPK Hikari Karya Mandiri — Website
 
-Landing page + 3 halaman konten untuk **LPK Nippon Mandiri** (kerja ke Jepang mandiri lewat jalur resmi Tokutei Ginou). Dikonversi dari template `adistaps/ramahtour` (Next.js 16, React 19, Tailwind v4).
+Landing page + 3 halaman konten untuk **LPK Hikari Karya Mandiri** (kerja ke Jepang mandiri lewat jalur resmi Tokutei Ginou). Dikonversi dari template `adistaps/ramahtour` (Next.js 16, React 19, Tailwind v4).
 
 ## Menjalankan Secara Lokal
 

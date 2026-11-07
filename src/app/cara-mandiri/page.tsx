@@ -267,7 +267,7 @@ export default function CaraMandiriPage() {
                 Tidak perlu menjalaninya sendirian
               </h3>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base">
-                Mandiri bukan berarti sendirian. LPK Nippon Mandiri hadir sebagai mentor dan pendamping tepercaya yang pernah menjalaninya sendiri, membantumu melangkah ke Jepang secara aman, transparan, dan tenang sepanjang prosesnya.
+                Mandiri bukan berarti sendirian. LPK Hikari Karya Mandiri hadir sebagai mentor dan pendamping tepercaya yang pernah menjalaninya sendiri, membantumu melangkah ke Jepang secara aman, transparan, dan tenang sepanjang prosesnya.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <a
