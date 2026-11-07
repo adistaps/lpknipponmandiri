@@ -1,38 +1,126 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
+import BlogShell from "@/components/blog/BlogShell"
+import FeaturedCarousel from "@/components/blog/FeaturedCarousel"
+import { formatDateShort, getSortedPosts, type Post } from "@/lib/blog"
 import { ROUTES } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Cerita dan hasil kerja dari pengalaman bekerja di Jepang. Segera hadir.",
+  description:
+    "Cerita dan pengalaman nyata bekerja di Jepang: refleksi, kehidupan sehari-hari, dan pelajaran dari perjalanan Tokutei Ginou.",
   alternates: { canonical: ROUTES.blog },
 }
 
-export default function BlogPage() {
-  return (
-    <main
-      className="relative flex min-h-screen flex-col items-center bg-cover bg-center bg-no-repeat px-5 text-center text-white"
-      style={{ backgroundImage: "url('/bg2.webp')" }}
-    >
-      <Link
-        href="/"
-        className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-white sm:text-sm"
-      >
-        LPK Hikari Karya Mandiri
-      </Link>
+const LABEL =
+  "font-[family-name:var(--font-blog-label)] text-[10px] font-medium uppercase tracking-[0.3em]"
+const SERIF = "font-[family-name:var(--font-blog-serif)]"
 
-      <div className="flex flex-1 flex-col items-center justify-center pb-24">
-        <h1 className="text-5xl font-medium tracking-tight sm:text-7xl">Segera hadir.</h1>
-        <p className="mt-4 max-w-md text-xs leading-relaxed sm:text-sm">
-          Artikel tentang hasil kerja dan pengalaman bekerja di Jepang sedang kami siapkan.
-        </p>
-        <Link
-          href="/"
-          className="mt-8 border border-white px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-black"
-        >
-          Kembali ke beranda
-        </Link>
+function ReadMore({ href }: { href: string }) {
+  return (
+    <Link href={href} className={`${LABEL} group mt-6 inline-flex flex-col items-center gap-1.5 text-black`}>
+      Baca selengkapnya
+      <span className="h-px w-5 bg-black transition-all duration-300 group-hover:w-full" />
+    </Link>
+  )
+}
+
+function FeaturedPost({ post }: { post: Post }) {
+  const href = `${ROUTES.blog}/${post.slug}`
+  return (
+    <article className="text-center">
+      <p className={LABEL}>{post.category}</p>
+      <h2 className={`${SERIF} mt-3 text-[28px] leading-tight sm:text-[32px]`}>
+        <Link href={href}>{post.title}</Link>
+      </h2>
+      <p className={`${LABEL} mt-3 text-[9px]`}>
+        Oleh {post.author} | {formatDateShort(post.date)}
+      </p>
+      <Link href={href} className="mt-6 block">
+        <Image
+          src={post.cover.src}
+          alt={post.cover.alt}
+          width={post.cover.width}
+          height={post.cover.height}
+          sizes="(min-width:1024px) 760px, 100vw"
+          className="h-auto w-full"
+          priority
+        />
+      </Link>
+      <p className={`${SERIF} mt-6 text-left text-[13px] leading-[1.95]`}>{post.excerpt}</p>
+      <ReadMore href={href} />
+    </article>
+  )
+}
+
+function PostRow({ post }: { post: Post }) {
+  const href = `${ROUTES.blog}/${post.slug}`
+  return (
+    <article className="grid items-center gap-6 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-8">
+      <Link href={href} className="relative block aspect-[4/5] w-full overflow-hidden sm:w-[200px]">
+        <Image
+          src={post.cover.src}
+          alt={post.cover.alt}
+          fill
+          sizes="200px"
+          className="object-cover"
+        />
+      </Link>
+      <div className="text-center">
+        <p className={LABEL}>{post.category}</p>
+        <h2 className={`${SERIF} mt-3 text-[26px] leading-tight`}>
+          <Link href={href}>{post.title}</Link>
+        </h2>
+        <p className={`${SERIF} mt-4 text-[13px] leading-[1.95]`}>{post.excerpt}</p>
+        <ReadMore href={href} />
       </div>
-    </main>
+    </article>
+  )
+}
+
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; kategori?: string }>
+}) {
+  const { q, kategori } = await searchParams
+  const all = getSortedPosts()
+
+  const query = q?.trim().toLowerCase()
+  const posts = all.filter((p) => {
+    if (kategori && p.category !== kategori) return false
+    if (query && !`${p.title} ${p.excerpt} ${p.category}`.toLowerCase().includes(query)) return false
+    return true
+  })
+  const filtering = Boolean(query || kategori)
+  const [first, ...rest] = posts
+
+  return (
+    <BlogShell featured={!filtering ? <FeaturedCarousel posts={all} /> : undefined}>
+      <h1 className="sr-only">Blog LPK Nippon Mandiri</h1>
+      {filtering && (
+        <p className={`${LABEL} mb-8 text-center`}>
+          {posts.length} hasil untuk &ldquo;{kategori ?? q}&rdquo; ·{" "}
+          <Link href={ROUTES.blog} className="underline underline-offset-4">
+            Lihat semua
+          </Link>
+        </p>
+      )}
+
+      {posts.length === 0 ? (
+        <p className={`${SERIF} text-center text-[14px] italic`}>Belum ada artikel yang cocok.</p>
+      ) : (
+        <div>
+          {first && <FeaturedPost post={first} />}
+          {rest.map((post) => (
+            <div key={post.slug}>
+              <hr className="my-10 border-t border-black" />
+              <PostRow post={post} />
+            </div>
+          ))}
+        </div>
+      )}
+    </BlogShell>
   )
 }

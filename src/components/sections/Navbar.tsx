@@ -17,18 +17,25 @@ const MENU_ITEMS = [
 const SCROLL_THRESHOLD = 40
 
 // Logo: path & ukuran ditulis sekali, dipakai di navbar dan menu overlay
-const LOGO = (
+const GRAY_LOGO_SHADOW =
+  "[filter:drop-shadow(0_0_1px_rgba(107,114,128,1))_drop-shadow(0_2px_5px_rgba(107,114,128,0.9))]"
+
+const renderLogo = (shadow = false) => (
   <Image
     src="/logo.webp"
     alt={SITE_NAME}
     width={240}
     height={75}
     priority
-    className="h-10 sm:h-14 w-auto object-contain"
+    className={`h-10 sm:h-14 w-auto object-contain ${shadow ? GRAY_LOGO_SHADOW : ""}`}
   />
 )
 
-export default function Navbar() {
+export default function Navbar({ tone = "light" }: { tone?: "light" | "dark" } = {}) {
+  // tone="light": teks putih (default, untuk halaman gelap/hero)
+  // tone="dark" : teks & hamburger gelap, logo diberi bayangan abu-abu (untuk halaman berlatar putih seperti blog)
+  const dark = tone === "dark"
+
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -60,12 +67,14 @@ export default function Navbar() {
   return (
     <>
       {/* ========================================================================= */}
-      {/* TOP NAVBAR — selalu transparan, tinggi & ukuran logo tetap */}
+      {/* TOP NAVBAR — selalu transparan. tone="dark" = teks gelap untuk halaman berlatar putih (blog) */}
       {/* ========================================================================= */}
       <header
-        className={`fixed top-0 inset-x-0 z-40 text-white font-sans transition-colors duration-300 ${scrolled
-          ? "bg-transparent"
-          : "bg-gradient-to-b from-black/50 to-transparent"
+        className={`fixed top-0 inset-x-0 z-40 font-sans transition-colors duration-300 ${dark
+          ? "bg-transparent text-neutral-900"
+          : scrolled
+            ? "bg-transparent text-white"
+            : "bg-gradient-to-b from-black/50 to-transparent text-white"
           }`}
       >
         <div className="mx-auto flex h-20 sm:h-24 w-full max-w-[1440px] items-center justify-between px-4 sm:px-8">
@@ -77,7 +86,7 @@ export default function Navbar() {
               aria-label={SITE_NAME}
               className="flex items-center shrink-0 transition-opacity hover:opacity-85"
             >
-              {LOGO}
+              {renderLogo(dark)}
             </Link>
 
             {/* Hanya tampil di hero; hilang saat discroll */}
@@ -85,9 +94,12 @@ export default function Navbar() {
               href={ROUTES.caraMandiri}
               tabIndex={scrolled ? -1 : 0}
               aria-hidden={scrolled}
-              className={`hidden md:flex items-center gap-2.5 min-w-0 text-xs sm:text-sm lg:text-base font-medium text-white drop-shadow-md hover:underline underline-offset-4 decoration-white/60 transition-all duration-300 ${scrolled
-                ? "opacity-0 -translate-x-2 pointer-events-none"
-                : "opacity-100 translate-x-0"
+              className={`hidden md:flex items-center gap-2.5 min-w-0 text-xs sm:text-sm lg:text-base font-medium hover:underline underline-offset-4 transition-all duration-300 ${dark
+                ? "text-neutral-900 decoration-neutral-900/50"
+                : "text-white drop-shadow-md decoration-white/60"
+                } ${scrolled
+                  ? "opacity-0 -translate-x-2 pointer-events-none"
+                  : "opacity-100 translate-x-0"
                 }`}
             >
               <span className="h-2 w-2 rounded-full bg-red-600 shrink-0" />
@@ -99,11 +111,12 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(true)}
             aria-label="Buka menu navigasi"
-            className="shrink-0 ml-4 flex items-center gap-2.5 text-sm sm:text-base font-semibold text-white drop-shadow-md hover:opacity-80 transition-opacity cursor-pointer"
+            className={`shrink-0 ml-4 flex items-center gap-2.5 text-sm sm:text-base font-semibold hover:opacity-80 transition-opacity cursor-pointer ${dark ? "text-neutral-900" : "text-white drop-shadow-md"
+              }`}
           >
             <span className="flex flex-col gap-[5px]">
-              <span className="block h-[2px] w-6 bg-white" />
-              <span className="block h-[2px] w-6 bg-white" />
+              <span className={`block h-[2px] w-6 ${dark ? "bg-neutral-900" : "bg-white"}`} />
+              <span className={`block h-[2px] w-6 ${dark ? "bg-neutral-900" : "bg-white"}`} />
             </span>
             <span>Menu</span>
           </button>
@@ -125,7 +138,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center"
             >
-              {LOGO}
+              {renderLogo()}
             </Link>
 
             <button
