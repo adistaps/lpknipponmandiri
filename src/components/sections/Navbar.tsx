@@ -16,11 +16,23 @@ const MENU_ITEMS = [
 // Jarak scroll (px) sebelum navbar berubah mode
 const SCROLL_THRESHOLD = 40
 
+// Logo: path & ukuran ditulis sekali, dipakai di navbar dan menu overlay
+const LOGO = (
+  <Image
+    src="/logo.webp"
+    alt={SITE_NAME}
+    width={240}
+    height={75}
+    priority
+    className="h-10 sm:h-14 w-auto object-contain"
+  />
+)
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
-  // Deteksi scroll: di hero = logo asli, setelah scroll = logo putih (ukuran tetap)
+  // Deteksi scroll: dipakai untuk gradasi navbar dan tautan "Cara Mandiri"
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD)
     onScroll()
@@ -65,18 +77,7 @@ export default function Navbar() {
               aria-label={SITE_NAME}
               className="flex items-center shrink-0 transition-opacity hover:opacity-85"
             >
-              {/* Ukuran logo sama persis di hero maupun saat discroll */}
-              <Image
-                src="/logo.webp"
-                alt={SITE_NAME}
-                width={240}
-                height={75}
-                priority
-                className={`h-10 sm:h-14 w-auto object-contain transition-[filter] duration-300 ${scrolled
-                  ? "brightness-0 invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]"
-                  : ""
-                  }`}
-              />
+              {LOGO}
             </Link>
 
             {/* Hanya tampil di hero; hilang saat discroll */}
@@ -114,24 +115,22 @@ export default function Navbar() {
       {/* MENU OVERLAY (SIMPLE, RATA KANAN) */}
       {/* ========================================================================= */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#f6f6f6] text-[#111] flex flex-col overflow-y-auto animate-in fade-in duration-300 font-sans">
+        <div className="fixed inset-0 z-50 bg-[#272b2e] text-white flex flex-col overflow-y-auto animate-in fade-in duration-300 font-sans">
 
           {/* Bar atas: Logo & Close */}
           <div className="mx-auto flex h-20 sm:h-24 w-full max-w-[1440px] shrink-0 items-center justify-between px-4 sm:px-8">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center">
-              <Image
-                src="/logo.webp"
-                alt={SITE_NAME}
-                width={240}
-                height={75}
-                priority
-                className="h-12 sm:h-16 w-auto object-contain"
-              />
+            <Link
+              href="/"
+              aria-label={SITE_NAME}
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center"
+            >
+              {LOGO}
             </Link>
 
             <button
               onClick={() => setMenuOpen(false)}
-              className="text-xs sm:text-sm font-medium uppercase tracking-[0.25em] text-[#111] hover:opacity-50 transition-opacity cursor-pointer"
+              className="text-xs sm:text-sm font-medium uppercase tracking-[0.25em] text-white hover:opacity-50 transition-opacity cursor-pointer"
             >
               Close
             </button>
@@ -141,13 +140,13 @@ export default function Navbar() {
           <nav className="mx-auto w-full max-w-[1440px] flex-1 flex flex-col justify-center items-end px-6 sm:px-8 lg:px-16 py-10">
             <ul className="w-full max-w-md flex flex-col">
               {MENU_ITEMS.map((item) => (
-                <li key={item.label} className="border-b border-black/10 first:border-t">
+                <li key={item.label} className="border-b border-white/15 first:border-t">
                   <Link
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className="group flex items-baseline justify-end py-4 sm:py-5 text-right"
                   >
-                    <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase tracking-wide text-[#111] transition-transform duration-300 group-hover:-translate-x-1.5">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase tracking-wide text-white transition-transform duration-300 group-hover:-translate-x-1.5">
                       {item.label}
                     </span>
                   </Link>

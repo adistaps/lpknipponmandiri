@@ -29,7 +29,7 @@ export default function Founder() {
                             </span>
 
                             <blockquote className="italic text-base leading-relaxed sm:text-2xl sm:leading-snug lg:text-3xl text-white font-medium">
-                                Berbekal 4 tahun pengalaman bekerja di Jepang dan latar belakang sebagai pengajar bahasa Jepang, saya tahu betul banyak orang ingin berkarier di sana, tetapi terhalang informasi dan biaya. Karena itu saya hadir sebagai pendamping yang aman, transparan, dan tenang sepanjang prosesnya.
+                                Berbekal 4 tahun pengalaman bekerja di Jepang dan latar belakang sebagai pengajar bahasa Jepang, saya tahu betul banyak orang ingin berkarier di sana, tetapi terhalang informasi dan biaya. Karena itu saya hadir sebagai pendamping yang aman, biaya transparan, dan membuat anda tenang sepanjang prosesnya.
                             </blockquote>
 
                             <p className="mt-6 sm:mt-8 text-sm sm:text-base text-slate-400">
@@ -43,7 +43,7 @@ export default function Founder() {
                     <ScrollReveal direction="left" delay={0.2} className="lg:col-span-6 order-1 lg:order-2">
                         <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#1f2326]">
                             <Image
-                                src="/about.webp"
+                                src="/founder.webp"
                                 alt="Foto Khidayat Hamim, pendiri LPK Nippon Mandiri"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"

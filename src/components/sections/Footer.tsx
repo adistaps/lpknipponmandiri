@@ -41,11 +41,11 @@ export default function FooterFull() {
                 <footer className="relative w-full overflow-hidden bg-white text-[#111]">
 
                     {/* ===================== ATAS: Link ===================== */}
-                    <div className="flex flex-col gap-12 px-8 pt-10 max-sm:px-5 max-sm:pt-8 max-sm:gap-6 sm:px-12 sm:pt-12 lg:flex-row lg:items-start lg:justify-between">
-                        {/* Kiri: Logo */}
-                        <Link href="/" aria-label={SITE_NAME} className="inline-block w-fit transition-opacity hover:opacity-80">
+                    <div className="flex flex-col items-center gap-12 px-8 pt-10 max-sm:px-5 max-sm:pt-8 max-sm:gap-6 sm:px-12 sm:pt-12 lg:flex-row lg:items-start lg:justify-between">
+                        {/* Kiri: Logo (tengah di ponsel & tablet) */}
+                        <Link href="/" aria-label={SITE_NAME} className="mx-auto inline-block w-fit transition-opacity hover:opacity-80 lg:mx-0">
                             <Image
-                                src="/logo.webp"
+                                src="/logo2.webp"
                                 alt={SITE_NAME}
                                 width={400}
                                 height={200}
@@ -83,7 +83,7 @@ export default function FooterFull() {
                             className="block w-full bg-gradient-to-b from-zinc-200 via-zinc-100 to-transparent bg-clip-text text-center font-black uppercase text-transparent"
                             style={{ fontSize: "20vw", lineHeight: 0.85, letterSpacing: "-0.02em" }}
                         >
-                            NIPPON
+                            HIKARI
                         </span>
                     </div>
 
