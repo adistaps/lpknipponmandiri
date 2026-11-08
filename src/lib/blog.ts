@@ -20,7 +20,11 @@ export type Post = {
   content: Block[]
 }
 
-export const BLOG_TITLE_LINES = ["LPK", "HIKARI", "KARYA", "MANDIRI"] as const
+export const BLOG_MASTHEAD = {
+  title: "My Blog",
+  quote:
+    '"Saya menulis untuk membuka jalan dan kesempatan baru bagi teman-teman yang ingin bekerja di Jepang, agar setiap prosesnya terasa lebih mudah, jelas, dan penuh rasa tenang."',
+}
 
 export const BLOG_AUTHOR = {
   name: "Khamim Hidayat",

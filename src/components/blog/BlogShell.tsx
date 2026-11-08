@@ -4,7 +4,7 @@ import Navbar from "@/components/sections/Navbar"
 import Footer from "@/components/sections/Footer"
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp"
 import BlogSidebar from "@/components/blog/BlogSidebar"
-import { BLOG_TITLE_LINES } from "@/lib/blog"
+import { BLOG_MASTHEAD } from "@/lib/blog"
 import { ROUTES } from "@/lib/site"
 
 const serif = Playfair_Display({
@@ -36,19 +36,20 @@ export default function BlogShell({
           (spesifisitas 0, sehingga class font di elemen mana pun tetap menang). */}
       <main className="bg-white pt-20 font-[family-name:var(--font-blog-serif)] text-black [:where(&)_*]:[font-family:inherit] sm:pt-24">
         {/* Masthead */}
-        <Link
-          href={ROUTES.blog}
-          aria-label="Blog LPK Hikari Karya Mandiri"
-          className="block px-4 pb-10 pt-10 text-center sm:pb-14 sm:pt-14"
-        >
-          <div className="font-[family-name:var(--font-blog-serif)] text-[clamp(52px,11vw,132px)] font-normal uppercase leading-[0.86] tracking-[-0.03em]">
-            {BLOG_TITLE_LINES.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </div>
-        </Link>
+        <div className="mx-auto max-w-4xl px-5 pb-10 pt-10 text-center sm:pb-14 sm:pt-14">
+          <Link
+            href={ROUTES.blog}
+            aria-label={BLOG_MASTHEAD.title}
+            className="inline-block transition-opacity hover:opacity-80"
+          >
+            <h1 className="font-[family-name:var(--font-blog-serif)] text-[clamp(44px,7vw,84px)] font-bold tracking-tight text-black sm:text-[clamp(52px,8vw,96px)]">
+              {BLOG_MASTHEAD.title}
+            </h1>
+          </Link>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-black/75 sm:mt-5 sm:text-base md:text-lg">
+            {BLOG_MASTHEAD.quote}
+          </p>
+        </div>
 
         <div className="mx-auto w-full max-w-[1100px] px-5 sm:px-8">
           {featured}
