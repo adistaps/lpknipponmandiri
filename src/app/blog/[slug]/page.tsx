@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import BlogShell from "@/components/blog/BlogShell"
 import Inline from "@/components/blog/Inline"
 import { POSTS, formatDateLong, formatDateShort, getPost } from "@/lib/blog"
-import { ROUTES, SITE_URL } from "@/lib/site"
+import { ROUTES, SITE_NAME, SITE_URL } from "@/lib/site"
 
 const LABEL =
   "font-[family-name:var(--font-blog-label)] text-[10px] font-medium uppercase tracking-[0.3em]"
@@ -23,19 +23,37 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPost(slug)
   if (!post) return {}
-  const url = `${ROUTES.blog}/${post.slug}`
+  const canonicalUrl = `${SITE_URL}${ROUTES.blog}/${post.slug}`
+  const imageUrl = `${SITE_URL}${post.cover.src}`
+
   return {
-    title: post.title,
+    title: `${post.title} | Blog ${SITE_NAME}`,
     description: post.excerpt,
-    alternates: { canonical: url },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
-      url: `${SITE_URL}${url}`,
-      title: post.title,
+      locale: "id_ID",
+      url: canonicalUrl,
+      siteName: SITE_NAME,
+      title: `${post.title} | ${SITE_NAME}`,
       description: post.excerpt,
       publishedTime: post.date,
-      modifiedTime: post.updated,
-      images: [{ url: `${SITE_URL}${post.cover.src}`, width: post.cover.width, height: post.cover.height }],
+      modifiedTime: post.updated ?? post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: imageUrl,
+          width: post.cover.width,
+          height: post.cover.height,
+          alt: post.cover.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | ${SITE_NAME}`,
+      description: post.excerpt,
+      images: [imageUrl],
     },
   }
 }
@@ -45,8 +63,38 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getPost(slug)
   if (!post) notFound()
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${SITE_URL}${post.cover.src}`,
+    datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "EducationalOrganization",
+      name: SITE_NAME,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/icon.webp`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}${ROUTES.blog}/${post.slug}`,
+    },
+  }
+
   return (
     <BlogShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <article>
         <header className="text-center">
           <p className={LABEL}>{post.category}</p>

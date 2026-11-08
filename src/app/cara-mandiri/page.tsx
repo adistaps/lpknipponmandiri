@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import PageShell from "@/components/sections/PageShell"
-import { ROUTES, waLink, WA_DEFAULT_MESSAGE } from "@/lib/site"
+import { ROUTES, SITE_NAME, SITE_URL, waLink, WA_DEFAULT_MESSAGE } from "@/lib/site"
 
 // ── Data konten — edit langsung di sini ──────────────────────────────────────
 type IconName = "user" | "book" | "badge" | "search" | "chat" | "doc"
@@ -90,10 +90,42 @@ const MANDIRI_STEPS: {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Cara Mandiri Berangkat Kerja ke Jepang (Tokutei Ginou)",
+  title: "Panduan 6 Tahap Cara Mandiri Kerja ke Jepang (Visa SSW / Tokutei Ginou)",
   description:
-    "Panduan lengkap 6 tahap berangkat kerja ke Jepang dengan visa Tokutei Ginou (SSW) secara mandiri, tanpa LPK atau perusahaan penyalur.",
-  alternates: { canonical: ROUTES.caraMandiri },
+    "Panduan resmi dan lengkap berangkat kerja ke Jepang jalur mandiri (self-processing) tanpa biaya penyalur ilegal. Langkah demi langkah dari belajar bahasa hingga pengurusan visa kerja.",
+  alternates: { canonical: `${SITE_URL}${ROUTES.caraMandiri}` },
+  keywords: [
+    "cara mandiri kerja ke jepang",
+    "kerja ke jepang tanpa agen",
+    "jalur mandiri tokutei ginou",
+    "tahapan ssw jepang",
+    "biaya kerja mandiri jepang",
+    "coe jepang mandiri",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: `${SITE_URL}${ROUTES.caraMandiri}`,
+    siteName: SITE_NAME,
+    title: `Panduan Cara Mandiri Kerja ke Jepang (Tokutei Ginou) | ${SITE_NAME}`,
+    description:
+      "Panduan 6 langkah resmi berangkat kerja ke Jepang secara mandiri: ujian JFT/JLPT, tes keahlian, melamar ke kaisha, hingga terbit visa kerja.",
+    images: [
+      {
+        url: `${SITE_URL}/bg1.webp`,
+        width: 1200,
+        height: 630,
+        alt: "Panduan Mandiri Kerja ke Jepang",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Panduan Cara Mandiri Kerja ke Jepang (Tokutei Ginou) | ${SITE_NAME}`,
+    description:
+      "Panduan 6 langkah resmi berangkat kerja ke Jepang secara mandiri: ujian JFT/JLPT, tes keahlian, melamar ke kaisha, hingga terbit visa kerja.",
+    images: [`${SITE_URL}/bg1.webp`],
+  },
 }
 
 function StepIcon({ name }: { name: IconName }) {

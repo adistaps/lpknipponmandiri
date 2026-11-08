@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import './globals.css'
-import { SITE_NAME, SITE_URL, SITE_TAGLINE, SITE_DESCRIPTION, WA_NUMBER } from '@/lib/site'
+import { SITE_NAME, SITE_URL, SITE_TAGLINE, SITE_DESCRIPTION, WA_NUMBER, SITE_EMAIL, SITE_ADDRESS, SITE_MAPS_COORDS } from '@/lib/site'
 
 const plusJakartaSans = localFont({
   src: [
@@ -30,16 +30,19 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    'lpk Hikari Karya Mandiri',
+    'LPK Hikari Karya Mandiri',
+    'lpk hikari wonosobo',
     'kerja ke jepang',
     'kerja ke jepang mandiri',
     'tokutei ginou',
     'specified skilled worker',
-    'visa ssw',
-    'jft basic',
+    'visa ssw jepang',
+    'jft basic a2',
     'jlpt n4',
-    'kaigo',
+    'kaigo jepang',
     'sektor tokutei ginou',
+    'biaya kerja ke jepang',
+    'lpk jepang resmi',
   ],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/5.webp`,
         width: 1200,
         height: 630,
-        alt: SITE_NAME,
+        alt: `${SITE_NAME} - Pelatihan dan Pendampingan Kerja ke Jepang`,
       },
     ],
   },
@@ -106,9 +109,25 @@ const jsonLd = {
       description: SITE_DESCRIPTION,
       url: SITE_URL,
       telephone: `+${WA_NUMBER}`,
+      email: SITE_EMAIL,
       logo: `${SITE_URL}/icon.webp`,
       image: `${SITE_URL}/5.webp`,
-      areaServed: 'ID',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Dsn.Ngelo RT. 012 Rw.003 Ds.Sudungdewo',
+        addressLocality: 'Wonosobo',
+        addressRegion: 'Jawa Tengah',
+        addressCountry: 'ID',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: SITE_MAPS_COORDS.lat,
+        longitude: SITE_MAPS_COORDS.lng,
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'Indonesia',
+      },
       sameAs: [`https://wa.me/${WA_NUMBER}`],
     },
     {
@@ -118,6 +137,9 @@ const jsonLd = {
       name: SITE_NAME,
       description: SITE_DESCRIPTION,
       inLanguage: 'id-ID',
+      publisher: {
+        '@id': `${SITE_URL}/#organization`,
+      },
     },
   ],
 }

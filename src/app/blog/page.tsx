@@ -4,13 +4,44 @@ import Link from "next/link"
 import BlogShell from "@/components/blog/BlogShell"
 import FeaturedCarousel from "@/components/blog/FeaturedCarousel"
 import { formatDateShort, getSortedPosts, type Post } from "@/lib/blog"
-import { ROUTES } from "@/lib/site"
+import { ROUTES, SITE_NAME, SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Blog & Pengalaman Kerja di Jepang | LPK Hikari Karya Mandiri",
   description:
-    "Cerita dan pengalaman nyata bekerja di Jepang: refleksi, kehidupan sehari-hari, dan pelajaran dari perjalanan Tokutei Ginou.",
-  alternates: { canonical: ROUTES.blog },
+    "Cerita, refleksi, dan pengalaman nyata bekerja di Jepang lewat jalur Tokutei Ginou: tips hidup di Jepang, budaya kerja, hingga persiapan mental.",
+  alternates: { canonical: `${SITE_URL}${ROUTES.blog}` },
+  keywords: [
+    "blog kerja ke jepang",
+    "pengalaman kerja di jepang",
+    "kehidupan di jepang pekerja indonesia",
+    "tips kerja jepang",
+    "cerita tokutei ginou",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: `${SITE_URL}${ROUTES.blog}`,
+    siteName: SITE_NAME,
+    title: `Blog & Kisah Perjalanan Kerja ke Jepang | ${SITE_NAME}`,
+    description:
+      "Kumpulan artikel, cerita inspiratif, dan panduan praktis kehidupan serta karier di Jepang dari pengalaman langsung.",
+    images: [
+      {
+        url: `${SITE_URL}/5.webp`,
+        width: 1200,
+        height: 630,
+        alt: `Blog ${SITE_NAME}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Blog & Kisah Perjalanan Kerja ke Jepang | ${SITE_NAME}`,
+    description:
+      "Kumpulan artikel, cerita inspiratif, dan panduan praktis kehidupan serta karier di Jepang dari pengalaman langsung.",
+    images: [`${SITE_URL}/5.webp`],
+  },
 }
 
 const LABEL =

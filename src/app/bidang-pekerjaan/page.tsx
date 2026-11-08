@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import PageShell from "@/components/sections/PageShell"
 import { ParallaxScrollFeatureSection } from "@/components/ui/parallax-scroll-feature-section"
-import { ROUTES, waLink, WA_DEFAULT_MESSAGE } from "@/lib/site"
+import { ROUTES, SITE_NAME, SITE_URL, waLink, WA_DEFAULT_MESSAGE } from "@/lib/site"
 
 // ── Data konten — edit langsung di sini ──────────────────────────────────────
 // Foto tiap bidang ada di komponen parallax (prop `images`), urutan sama dengan array ini.
@@ -111,10 +111,42 @@ const SECTORS = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Bidang Pekerjaan Visa Tokutei Ginou (SSW) di Jepang",
+  title: "11 Bidang Pekerjaan Visa Tokutei Ginou (SSW) Jepang & Syaratnya",
   description:
-    "Daftar 11 sektor dan bidang pekerjaan jalur Tokutei Ginou (Specified Skilled Worker) di Jepang beserta tugas utama dan syarat umumnya.",
-  alternates: { canonical: ROUTES.bidangPekerjaan },
+    "Pelajari 11 sektor pekerjaan resmi program Tokutei Ginou (SSW) di Jepang: pertanian, pengolahan makanan, kaigo (perawatan lansia), perhotelan, hingga manufaktur lengkap dengan syarat dan tugas.",
+  alternates: { canonical: `${SITE_URL}${ROUTES.bidangPekerjaan}` },
+  keywords: [
+    "sektor tokutei ginou",
+    "bidang pekerjaan jepang ssw",
+    "kaigo jepang",
+    "pekerjaan restoran jepang",
+    "pertanian jepang ssw",
+    "syarat tokutei ginou",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: `${SITE_URL}${ROUTES.bidangPekerjaan}`,
+    siteName: SITE_NAME,
+    title: `11 Bidang Pekerjaan Visa Tokutei Ginou (SSW) di Jepang | ${SITE_NAME}`,
+    description:
+      "Daftar lengkap 11 sektor resmi program Tokutei Ginou di Jepang: tugas harian, gaji setara lokal, dan persyaratan keahlian.",
+    images: [
+      {
+        url: `${SITE_URL}/bg2.webp`,
+        width: 1200,
+        height: 630,
+        alt: "Bidang Pekerjaan Tokutei Ginou Jepang",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `11 Bidang Pekerjaan Visa Tokutei Ginou (SSW) di Jepang | ${SITE_NAME}`,
+    description:
+      "Daftar lengkap 11 sektor resmi program Tokutei Ginou di Jepang: tugas harian, gaji setara lokal, dan persyaratan keahlian.",
+    images: [`${SITE_URL}/bg2.webp`],
+  },
 }
 
 export default function BidangPekerjaanPage() {
