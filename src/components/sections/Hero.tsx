@@ -30,7 +30,7 @@ export default function Hero() {
                 <div className="max-w-4xl text-center w-full flex flex-col items-center">
                     <ScrollReveal direction="down" delay={0.1}>
                         <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-white drop-shadow-xl">
-                            Pengalamanmu adalah aset.<br />
+                            Pengalamanmu adalah aset<br />
                             Jepang adalah panggungmu berikutnya.
                         </h2>
                     </ScrollReveal>
