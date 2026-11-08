@@ -1,6 +1,6 @@
 // Konfigurasi terpusat. Ganti nilai di sini, semua section ikut berubah.
 export const SITE_NAME = "LPK Hikari Karya Mandiri"
-export const SITE_URL = "https://lpknipponmandiri.com" // TODO: sesuaikan dengan domain aktif
+export const SITE_URL = "https://lpkhikari.site"
 export const SITE_TAGLINE = "Pelajari cara bekerja ke Jepang mandiri"
 export const SITE_DESCRIPTION =
   "LPK Hikari Karya Mandiri mendampingi kamu bekerja ke Jepang lewat jalur resmi Tokutei Ginou (SSW) secara aman, transparan, dan mandiri. Panduan, sektor pekerjaan, dan roadmap dari persiapan sampai berangkat."

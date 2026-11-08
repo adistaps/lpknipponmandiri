@@ -31,7 +31,9 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     'LPK Hikari Karya Mandiri',
+    'lpkhikari.site',
     'lpk hikari wonosobo',
+    'lpk hikari jepang',
     'kerja ke jepang',
     'kerja ke jepang mandiri',
     'tokutei ginou',
@@ -85,7 +87,11 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   icons: {
-    icon: '/icon.webp',
+    icon: [
+      { url: '/icon.webp', type: 'image/webp' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/icon.webp',
     apple: '/icon.webp',
   },
 }
