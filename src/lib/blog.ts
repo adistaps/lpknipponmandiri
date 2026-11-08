@@ -20,7 +20,7 @@ export type Post = {
   content: Block[]
 }
 
-export const BLOG_TITLE_LINES = ["LPK", "NIPPON", "MANDIRI"] as const
+export const BLOG_TITLE_LINES = ["LPK", "HIKARI", "KARYA", "MANDIRI"] as const
 
 export const BLOG_AUTHOR = {
   name: "Khamim Hidayat",

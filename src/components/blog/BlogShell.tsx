@@ -38,7 +38,7 @@ export default function BlogShell({
         {/* Masthead */}
         <Link
           href={ROUTES.blog}
-          aria-label="Blog LPK Nippon Mandiri"
+          aria-label="Blog LPK Hikari Karya Mandiri"
           className="block px-4 pb-10 pt-10 text-center sm:pb-14 sm:pt-14"
         >
           <div className="font-[family-name:var(--font-blog-serif)] text-[clamp(52px,11vw,132px)] font-normal uppercase leading-[0.86] tracking-[-0.03em]">

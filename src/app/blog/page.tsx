@@ -98,7 +98,7 @@ export default async function BlogPage({
 
   return (
     <BlogShell featured={!filtering ? <FeaturedCarousel posts={all} /> : undefined}>
-      <h1 className="sr-only">Blog LPK Nippon Mandiri</h1>
+      <h1 className="sr-only">Blog LPK Hikari Karya Mandiri</h1>
       {filtering && (
         <p className={`${LABEL} mb-8 text-center`}>
           {posts.length} hasil untuk &ldquo;{kategori ?? q}&rdquo; ·{" "}
